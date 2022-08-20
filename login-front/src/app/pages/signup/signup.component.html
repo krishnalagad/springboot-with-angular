@@ -1,0 +1,141 @@
+<div fxLayoutAlign="center center" fxFlexFill class="mt20 mb20">
+    
+    <mat-card fxFlex="47">
+
+        <mat-toolbar class="mb20" color="primary" style="justify-content: center; font-size: 30px;">REGISTER</mat-toolbar>
+        <!-- {{ user | json }} -->
+        <div style="font-size: 11px">
+            <form fxLayoutAlign="stretch" fxLayout="column">
+
+                <div class="bootstrap-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4" style="padding-left: 0%; padding-right: 0%;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label style="font-size: 13px;">First Name</mat-label>
+                                    <input 
+                                        style="font-size: 15px;"
+                                        matInput 
+                                        placeholder="Ex. Krishna"
+                                        [(ngModel)]="user.fName"
+                                        name="fName"
+                                        required>
+                                  </mat-form-field>
+                            </div>
+                            <div class="col-md-4" style="padding-left: 0%;padding-right: 0%;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label style="font-size: 13px;">Middle Name</mat-label>
+                                    <input 
+                                        style="font-size: 15px;"
+                                        matInput 
+                                        placeholder="Ex. Dilip"
+                                        [(ngModel)]="user.mName"
+                                        name="mName"
+                                        required>
+                                  </mat-form-field>
+                            </div>
+                            <div class="col-md-4" style="padding-left: 0%;padding-right: 0%;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label style="font-size: 13px;">Last Name</mat-label>
+                                    <input 
+                                        matInput 
+                                        placeholder="Ex. Lagad"
+                                        [(ngModel)]="user.lName"
+                                        name="lName"
+                                        required
+                                        style="font-size: 15px;">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <mat-form-field appearance="outline">
+                    <mat-label style="font-size: 13px;">Mobile Number</mat-label>
+                    <input 
+                        matInput 
+                        placeholder="Ex. 0000000000, 9999999999"
+                        [(ngModel)]="user.mobile"
+                        name="mobile"
+                        required
+                        style="font-size: 15px;">
+                </mat-form-field>
+    
+                <mat-form-field appearance="outline">
+                    <mat-label style="font-size: 13px;">Email</mat-label>
+                    <input 
+                        matInput 
+                        placeholder="Ex. pat@example.com"
+                        [(ngModel)]="user.email"
+                        name="email"
+                        required
+                        style="font-size: 15px;">
+                        <mat-hint style="font-size: 9px; color: #3f51b5;">Please provide your genuine email address.</mat-hint>
+                </mat-form-field>
+                
+                <div class="gender mt10">
+                    <div class="row mb10" style="font-size: 13px;">
+                        <!-- <mat-divider></mat-divider> -->
+                        <span class="mb20 ml10">Choose Gender : </span>
+    
+                        <input type="radio" name="gender" value="male" id="" [(ngModel)]="user.gender">Male |
+                        <input type="radio" name="gender" value="female" id="" [(ngModel)]="user.gender">Female | 
+                        <input type="radio" name="gender" value="transgender" id="" [(ngModel)]="user.gender">Transgender | 
+                        <input type="radio" name="gender" value="other" id="" [(ngModel)]="user.gender">Other 
+    
+                        <!-- <mat-radio-group [(ngModel)]="selectedGender">
+                            <mat-radio-button *ngFor="let gender of genders" [value]="gender"> {{ gender }} |&nbsp;&nbsp; </mat-radio-button>
+                        </mat-radio-group> -->
+                    </div>
+                </div>
+
+                <mat-form-field appearance="outline">
+                    <mat-label style="font-size: 13px;">Username</mat-label>
+                    <input 
+                      matInput 
+                      placeholder="Ex. krishna10, varsha_lagad22, geeta24"
+                      [(ngModel)]="user.username"
+                      name="username"
+                      required
+                      style="font-size: 15px;">
+                    <mat-hint style="font-size: 9px; color: #3f51b5;">Username must be unique.</mat-hint>
+                </mat-form-field>
+    
+                <mat-form-field appearance="outline">
+                    <mat-label style="font-size: 13px;">Password</mat-label>
+                    <input 
+                        type="password" 
+                        matInput 
+                        placeholder="Enter Password"
+                        name="password"
+                        [(ngModel)]="user.password"
+                        required
+                        style="font-size: 15px;">
+                    <mat-hint style="font-size: 9px; color: #3f51b5;">Password must contain atleast 8 characters.</mat-hint>
+                </mat-form-field>
+
+                <div class="image mb20 ml10">
+                    <mat-label style="font-size: 14px;">Profile Photo</mat-label>
+                    <input class="mt10 ml20" type="file" placeholder="Ex. .jpg, .png">
+                </div>
+    
+                <button mat-raised-button color="primary" (click)="formSubmit()">REGISTER</button>
+                <div class="bootstrap-wrapper mt10">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span style="color: grey; font-size: 13px;">Already Registered ? <b class="link"><a style="color: #3f51b5;"  [routerLink]="''">Login Here</a></b></span>
+                            </div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                                <b><a style="color: #3f51b5; font-size: 13px;" class="register" (click)="clearForm()">Reset Form</a></b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+        
+    </mat-card>
+</div>

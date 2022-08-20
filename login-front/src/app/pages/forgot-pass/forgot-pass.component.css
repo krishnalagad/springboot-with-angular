@@ -1,0 +1,26 @@
+.vertical-center{
+    margin-top: 100px;
+}
+.vertical-center:hover{
+    transform: translateY(1px);
+}
+
+.btn:active{
+    transform: translateY(1px);
+}
+.link{
+    cursor: pointer;
+}
+.link:hover{
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+.vertical_dotted_line
+{
+    border-left: 1px dotted #3f51b5;
+    height: 100px;
+} 
+.cls{
+    margin-top: 100px;
+}

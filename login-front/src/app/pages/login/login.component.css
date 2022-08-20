@@ -1,0 +1,16 @@
+.register{
+    cursor: pointer;
+}
+.register:hover{
+    text-decoration: underline;
+    transform: translateY(4px);
+    text-transform: uppercase;
+}
+.register:active{
+    transform: translateY(4px);
+}
+
+.hr{
+    color: #3f51b5;
+    
+}

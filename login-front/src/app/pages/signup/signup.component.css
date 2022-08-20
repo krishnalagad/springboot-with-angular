@@ -1,0 +1,10 @@
+.register{
+    cursor: pointer;
+}
+.register:hover{
+    text-decoration: underline;
+}
+
+.link:hover{
+    text-decoration:dashed;
+}

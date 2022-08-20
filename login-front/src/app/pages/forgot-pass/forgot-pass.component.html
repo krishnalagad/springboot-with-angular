@@ -1,0 +1,198 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" *ngIf="!success">
+
+            <div class="col-md-6">
+                <!-- username verification -->
+                <div class="vertical-center">
+                    <mat-card *ngIf="!vari">
+                        <!-- {{ data | json }} -->
+                        <mat-toolbar class="mb20" color="primary" style="justify-content: center; font-size: 30px; text-transform: uppercase;">username verification</mat-toolbar>
+                        <div class="main">
+                            <form>
+    
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w100" appearance="outline">
+                                            <mat-label>Username</mat-label>
+                                            <input 
+                                                matInput 
+                                                placeholder="Ex. krishna46"
+                                                [(ngModel)]="data.username"
+                                                name="username">
+                                                <mat-hint style="font-size: 10px; color: #3f51b5;">Please provide your username.</mat-hint>
+    
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="mb20 col-md-6">
+                                        <mat-form-field class="w100" appearance="outline">
+                                            <mat-label>Email</mat-label>
+                                            <input disabled
+                                                matInput 
+                                                placeholder="Ex. krishna@gmail.com"
+                                                [(ngModel)]="data.email"
+                                                name="email">
+                                                <mat-hint style="font-size: 10px; color: #3f51b5;">OTP will be sent to this Email-ID.</mat-hint>
+    
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+    
+                                <button class="btn mt30 w100" mat-raised-button color="primary" (click)="enable()">GET OTP AND CONTINUE</button>
+                                
+                                <div class="bootstrap-wrapper mt10">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-6">
+                                                <span 
+                                                    class="ml40"
+                                                    style="color: grey; font-size: 13px;">
+                                                    OTP not get?
+                                                    <b class="link">
+                                                        <a 
+                                                            class="link"
+                                                            style="color: #3f51b5;">
+                                                            Resent OTP
+                                                        </a>
+                                                    </b>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </mat-card>
+
+                    <mat-card *ngIf="vari">
+                        <mat-toolbar class="mb20 verisucc" color="accent" style="justify-content: center; text-transform: uppercase;">
+                            <img src="../../../assets/2x/outline_check_circle_white_24dp.png" alt="">
+                            <span style="font-size: 25px;">username verified</span><br>
+                            <!-- <p style="font-size: 8px;">your username verified successfully</p> -->
+
+                        </mat-toolbar>
+                        <!-- <mat-card-content>
+                            <span>
+
+                            </span>
+                        </mat-card-content> -->
+                    </mat-card>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- OTP  -->
+                <div class="vertical-center">
+                    <mat-card>
+                        <!-- {{ otpData }} -->
+                        <mat-toolbar class="mb20" color="primary" style="justify-content: center; font-size: 30px; text-transform: uppercase;">OTP verification</mat-toolbar>
+                        <div class="main">
+                            <form>
+                                <mat-form-field *ngIf="flag" class="mb20 w100" appearance="outline">
+                                    <mat-label>One Time Password</mat-label>
+                                    <input 
+                                        required
+                                        #otp 
+                                        maxlength="6"
+                                        type="number"
+                                        matInput 
+                                        placeholder="Ex. krishna46"
+                                        [(ngModel)]="otpData"
+                                        name="otpData">
+                                        <mat-hint style="font-size: 10px; color: #3f51b5;">Enter OTP got you on email.</mat-hint>
+                                        <mat-hint align="end">{{otp.value.length}} / 6</mat-hint>
+                                </mat-form-field>
+
+                                <button *ngIf="flag" class="btn mt30 w100" mat-raised-button color="primary" (click)="enableNewPass()">VERIFY OTP</button>
+
+                                <div *ngIf="!flag" class="bootstrap-wrapper mt10">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-8 offset-md-2">
+                                                <span 
+                                                    
+                                                    class="timer" 
+                                                    style="color: grey; font-size: 13px;">
+                                                    First complete username and email verification.
+                                                </span>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="flag" class="bootstrap-wrapper mt10">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <span 
+                                                    
+                                                    class="timer" 
+                                                    style="color: grey; font-size: 13px;">
+                                                    This OTP is valid for ... seconds.
+                                                </span>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-4">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+
+            
+        </div>
+        <!-- new password -->
+        <div class="row cls" *ngIf="success">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <mat-card>
+                        <!-- {{passwordData | json}} -->
+                        <mat-toolbar class="mb20" color="primary" style="justify-content: center; font-size: 30px; text-transform: uppercase;">Change password</mat-toolbar>
+                        <mat-card-content>
+                            <div class="newpass">
+                                <form>
+                                    <mat-form-field class="w100" appearance="outline">
+                                        <mat-label>New Password</mat-label>
+                                        <input 
+                                            matInput 
+                                            type="password"
+                                            placeholder="*********"
+                                            [(ngModel)]="passwordData.password"
+                                            name="password">
+                                            <mat-hint style="font-size: 10px; color: #3f51b5;">Please enter youe new password.</mat-hint>
+        
+                                    </mat-form-field>
+        
+                                    <mat-form-field class="w100 mb20 mt10" appearance="outline">
+                                        <mat-label>Confirm Password</mat-label>
+                                        <input 
+                                            matInput 
+                                            type="password"
+                                            placeholder="*********"
+                                            [(ngModel)]="passwordData.confirmPass"
+                                            name="confirmPass">
+                                            <mat-hint style="font-size: 10px; color: #3f51b5;">Confirm your password.</mat-hint>
+        
+                                    </mat-form-field>
+
+                                    <button class="btn mt40 w100" mat-raised-button color="primary" (click)="saveChange()">CHANGE PASSWORD</button>
+
+                                </form>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
